@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tvoje jména | Web Designer</title>
+  
+  <!-- Google Fonts - ⬇️ NAHRAĎ VLASTNÍM FONTEM -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitcount+Single:wght@100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Header bude tady -->
+
+  <!-- Hero sekce bude tady -->
+  <header class="header">
+  <div class="container">
+    <div class="header-content">
+      
+      <!-- Logo / Jméno -->
+      <a href="#home" class="logo">Jirka</a>
+      
+      <!-- Navigační menu -->
+      <nav class="nav">
+        <a href="#home" class="nav-link active">Home</a>
+        <a href="#about" class="nav-link">O mě</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#works" class="nav-link">Moje projekty</a>
+        <a href="#contact" class="nav-link">Kontakt</a>
+      </nav>
+      
+    </div>
+  </div>
+</header>
+  <script src="script.js"></script>
+  <section class="hero" id="home">
+  <div class="container">
+    <div class="hero-content">
+      
+      <!-- Levá strana - text -->
+      <div class="hero-text">
+        <h1>
+          Hi,<br>
+          I'm <span class="highlight">Jirka</span><br>
+          Skater
+        </h1>
+        
+        <p>Creative and passionate about building beautiful digital experiences.</p>
+        
+        <a href="#contact" class="btn btn-primary">Contact</a>
+      </div>
+      
+      <!-- Pravá strana - fotka -->
+      <div class="hero-image">
+        <svg class="image-mask" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+          <!-- SVG maska bude tady - vytvoříme v kroku 6 -->
+          <defs>
+            <clipPath id="circleMask">  
+              <path fill="#FF0066" d="M50.8,-64.8C62.5,-50.7,66.3,-31.5,67.2,-13.8C68,4,65.8,20.3,57.4,31.5C49,42.6,34.4,48.5,18.2,57.9C1.9,67.3,-15.9,80.1,-29.3,76.8C-42.7,73.6,-51.6,54.2,-58,36.6C-64.3,19,-68.3,3.1,-63.8,-9.4C-59.4,-22,-46.7,-31.2,-34.6,-45.3C-22.6,-59.4,-11.3,-78.4,4.1,-83.3C19.5,-88.2,39.1,-79,50.8,-64.8Z" transform="translate(170 190) scale(2.2)" />
+            </clipPath>
+          </defs>
+          <image href="images\profilovka.jpg" width="400" height="400" clip-path="url(#circleMask)" />
+        </svg>
+      </div>
+      
+    </div>
+  </div>
+</section>
+</body>
+</html>
