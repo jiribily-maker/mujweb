@@ -1,11 +1,12 @@
 :root {
   /* Barvy */
-  --primary-color: #5206ae;        /* Hlavní modrá - zvolil/a sis na Coolors */
-  --dark-text: #001a3f;            /* Tmavý text */
-  --light-bg: #a4d1fe;             /* Světlé pozadí */
-  --white: #bcd9f6;                /* Bílá */
+  --primary-color: #006ec8;        /* Hlavní modrá - zvolil/a sis na Coolors */
+  --dark-text: #001d43;            /* Tmavý text */
+  --light-bg: #5480fa;             /* Světlé pozadí */
+  --white: #b2c0f6;                /* Bílá */
   
   /* Fonty */
+  --font-main:'Open Sans' 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   --font-size-base: 16px;
   
   /* Rozestupy */
@@ -14,10 +15,12 @@
   --spacing-md: 24px;
   --spacing-lg: 32px;
   --spacing-xl: 48px;
+}
 
-  --font-main: 'Bitcount Single', sans-serif;
+h1 {font-family: var(--font-main);}
 
-  * {
+/* Reset a základy */
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -75,6 +78,19 @@ body {
   transition: color 0.3s ease;
 }
 
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: var(--primary-color);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
 .nav-link:hover {
   color: var(--primary-color);
 }
@@ -85,14 +101,9 @@ body {
 }
 
 .nav-link.active::after {
-  content: '';
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background-color: var(--primary-color);
+  transform: scaleX(1);
 }
+
 
 .hero {
   min-height: 100vh;
@@ -124,7 +135,7 @@ body {
 
 .hero-text p {
   font-size: 18px;
-  color: #7b869d;           /* Tmavě šedá */
+  color: #6B7280;           /* Tmavě šedá */
   margin-bottom: var(--spacing-lg);
   max-width: 400px;
 }
@@ -170,8 +181,10 @@ body {
   height: 100%;
 }
 
+
 /* Tablet a menší */
 @media (max-width: 768px) {
+  .header-content
   .hero-content {
     grid-template-columns: 1fr;  /* Jeden sloupec místo dvou */
     gap: var(--spacing-md);
@@ -206,4 +219,372 @@ body {
   }
 }
 
-h1 {font-family: var(--font-main);}}
+
+/* ===== SEKCE DOVEDNOSTI - ZÁKLAD ===== */
+
+.skills {
+  padding: var(--spacing-xl) 0;
+  background-color: var(--light-bg);
+}
+
+/* Nadpisy sekcí */
+.section-title {
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--dark-text);
+  text-align: center;
+  margin-bottom: var(--spacing-md);
+  
+  /* Gradient text */
+  background: linear-gradient(135deg, var(--primary-color), var(--dark-text));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.section-subtitle {
+  font-size: 18px;
+  color: #6B7280;
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+  font-weight: 500;
+}
+
+/* Grid layout pro desktop */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);  /* 3 sloupce vedle sebe */
+  gap: var(--spacing-lg);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Kartička */
+.skill-card {
+  background-color: var(--white);
+  padding: var(--spacing-lg);
+  border-radius: 12px;
+  text-align: center;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Hover efekt na kartičku */
+.skill-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+}
+
+/* Ikona */
+.skill-icon {
+  font-size: 48px;
+  width: 80px;
+  height: 80px;
+  margin-bottom: var(--spacing-md);
+  
+  /* Flexbox pro centrování emoji */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  
+  background-color: #EEF2FF;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+/* Hover efekt na ikonu */
+.skill-card:hover .skill-icon {
+  background-color: var(--primary-color);
+  color: var(--white);
+  transform: rotate(10deg) scale(1.1);
+}
+
+/* Texty */
+.skill-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--dark-text);
+  margin-bottom: var(--spacing-sm);
+  transition: color 0.3s ease;
+}
+
+.skill-card:hover .skill-title {
+  color: var(--primary-color);
+}
+
+.skill-description {
+  font-size: 14px;
+  color: #6B7280;
+  line-height: 1.6;
+}
+
+/* ===== RESPONSIVE DESIGN (Media Queries) ===== */
+
+/* Tablet (menší než 1024px) -> 2 sloupce */
+@media (max-width: 1024px) {
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .section-title {
+    font-size: 40px;
+  }
+}
+
+/* Mobil (menší než 768px) -> 1 sloupec */
+@media (max-width: 768px) {
+  .skills-grid {
+    grid-template-columns: 1fr; /* Pod sebou */
+    gap: var(--spacing-md);
+  }
+  
+  .section-title {
+    font-size: 32px;
+  }
+  
+  .section-subtitle {
+    font-size: 16px;
+  }
+  
+  .skill-card {
+    padding: var(--spacing-md);
+  }
+  
+  .skill-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 32px;
+  }
+}
+
+
+
+.skill-icon {
+  font-size: 48px;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin: 0 auto var(--spacing-md) auto;
+  
+  /* Gradient background */
+  background: linear-gradient(135deg, var(--primary-color) 0%, #60A5FA 100%);
+  color: var(--white);
+  
+  /* Transition */
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 16px rgba(59, 130, 246, 0.3);
+}
+
+.skill-card:hover .skill-icon {
+  transform: rotate(360deg) scale(1.2);  /* Úplná rotace + zvětšení */
+  box-shadow: 0 12px 24px rgba(59, 130, 246, 0.5);
+}
+
+/* ===== SEKCE PORTFOLIO - ZÁKLAD ===== */
+
+.portfolio {
+  padding: var(--spacing-xl) 0;
+  background-color: var(--white);
+}
+
+/* Filtrovací tlačítka */
+.portfolio-filters {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-xl);
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  padding: 12px 24px;
+  border: 2px solid var(--primary-color);
+  background-color: transparent;
+  color: var(--primary-color);
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 14px;
+}
+
+.filter-btn:hover {
+  background-color: var(--primary-color);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+
+.filter-btn.active {
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+
+/* Grid s projekty */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-lg);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Karta projektu */
+.portfolio-card {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: var(--white);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.portfolio-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+}
+
+/* Obrázek projektu */
+.portfolio-image {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+}
+
+.portfolio-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.portfolio-card:hover .portfolio-image img {
+  transform: scale(1.1);
+}
+
+/* Overlay - překryvná vrstva */
+.portfolio-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.3) 0%,
+    rgba(0, 0, 0, 0.8) 100%
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: var(--spacing-lg);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.portfolio-card:hover .portfolio-overlay {
+  opacity: 1;
+}
+
+/* Texty v overlay */
+.portfolio-title {
+  color: var(--white);
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: var(--spacing-xs);
+  transform: translateY(20px);
+  transition: transform 0.4s ease 0.1s;
+}
+
+.portfolio-card:hover .portfolio-title {
+  transform: translateY(0);
+}
+
+.portfolio-description {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 14px;
+  margin-bottom: var(--spacing-sm);
+  line-height: 1.5;
+  transform: translateY(20px);
+  transition: transform 0.4s ease 0.15s;
+}
+
+.portfolio-card:hover .portfolio-description {
+  transform: translateY(0);
+}
+
+/* Tagy technologií */
+.portfolio-tags {
+  display: flex;
+  gap: 8px;
+  margin-bottom: var(--spacing-sm);
+  flex-wrap: wrap;
+  transform: translateY(20px);
+  transition: transform 0.4s ease 0.2s;
+}
+
+.portfolio-card:hover .portfolio-tags {
+  transform: translateY(0);
+}
+
+.tag {
+  background-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  color: var(--white);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Odkazy na Demo/GitHub */
+.portfolio-links {
+  display: flex;
+  gap: var(--spacing-sm);
+  transform: translateY(20px);
+  transition: transform 0.4s ease 0.25s;
+}
+
+.portfolio-card:hover .portfolio-links {
+  transform: translateY(0);
+}
+
+.portfolio-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background-color: var(--white);
+  color: var(--dark-text);
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 13px;
+  transition: all 0.3s ease;
+}
+
+.portfolio-link:hover {
+  background-color: var(--primary-color);
+  color: var(--white);
+  transform: scale(1.05);
+}
+
+.portfolio-link svg {
+  width: 16px;
+  height: 16px;
+}
+
+.portfolio-load-more {
+  text-align: center;
+  margin-top: var(--spacing-xl);
+}
+
+.portfolio-card.hidden {
+  display: none;
+}
