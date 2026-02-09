@@ -98,3 +98,6 @@ loadMoreBtn.addEventListener('click', () => {
   });
   loadMoreBtn.style.display = 'none';
 });
+
+const visibleCards = document.querySelectorAll('.portfolio-card[style*="display: block"], .portfolio-card:not([style*="display: none"])');
+document.getElementById('project-count').textContent = visibleCards.length;
