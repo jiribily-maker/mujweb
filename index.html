@@ -9,7 +9,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bitcount+Single:wght@100..900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <!-- Původní (pro vývoj): -->
+<!-- <link rel="stylesheet" href="style.css"> -->
+
+<!-- Minifikovaný (pro produkci): -->
+<link rel="stylesheet" href="stylemin.css" />
+  <!-- Leaflet.js CSS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 </head>
 <body>
   <!-- Header bude tady -->
@@ -335,9 +341,44 @@
 
   <button type="submit" class="btn btn-primary">Poslat</button>
 </form>
+
 </div>
   </div>
 </section>
+
+<!-- Leaflet.js -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<!-- Sekce s mapou -->
+<section class="map-section" id="map-section">
+  <div class="container">
+    <h2 class="section-title">Kde mě najdeš</h2>
+    <p class="section-subtitle">Tu su!!</p>
+    <div id="map"></div>
+  </div>
+</section>
+
+<script>
+  // Inicializace mapy — souřadnice Prahy
+  var map = L.map("map").setView([49.223793334247624, 17.508776709888878], 15);
+
+  // Přidání mapových dlaždic z OpenStreetMap
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    attribution:
+      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+    maxZoom: 19,
+  }).addTo(map);
+  L.marker([49.223793334247624, 17.508776709888878])
+  .addTo(map)
+  .bindPopup("<strong>Tady mě najdeš</strong><br>Otrokovice")
+  .openPopup();
+  
+  L.marker([49.22497327649049, 17.5129138668609])
+  .addTo(map)
+  .bindPopup("<strong>Tu je moje oblíbená hospoda</strong><br>Otrokovice")
+  .openPopup();
+</script>
+
 <footer class="footer">
   <div class="container">
     <div class="footer-content">

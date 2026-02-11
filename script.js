@@ -101,3 +101,12 @@ loadMoreBtn.addEventListener('click', () => {
 
 const visibleCards = document.querySelectorAll('.portfolio-card[style*="display: block"], .portfolio-card:not([style*="display: none"])');
 document.getElementById('project-count').textContent = visibleCards.length;
+
+
+// Přidání markeru s popup oknem
+
+
+  L.marker([49.22497327649049, 17.5129138668609])
+  .addTo(map)
+  .bindPopup("<strong>Tu je moje oblíbená hospoda</strong><br>Otrokovice")
+  .openPopup();
